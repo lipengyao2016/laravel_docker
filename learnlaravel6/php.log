@@ -1,0 +1,2 @@
+[30-Oct-2019 07:33:30] ERROR: unable to bind listening socket for address '127.0.0.1:9000': Address already in use (98)
+[30-Oct-2019 07:33:30] ERROR: FPM initialization failed

@@ -1,0 +1,331 @@
+[2019-09-10 14:15:09 @148.0]	WARNING	swMsgQueue_create(:55): msgget() failed, Error: Function not implemented[38]
+[2019-09-10 14:15:09 @148.0]	WARNING	swMsgQueue_create(:55): msgget() failed, Error: Function not implemented[38]
+[2019-09-10 14:15:09 @148.0]	WARNING	swMsgQueue_create(:55): msgget() failed, Error: Function not implemented[38]
+[2019-09-10 14:15:09 @148.0]	WARNING	swMsgQueue_create(:55): msgget() failed, Error: Function not implemented[38]
+[2019-09-10 14:15:09 @148.0]	WARNING	swMsgQueue_create(:55): msgget() failed, Error: Function not implemented[38]
+worker 152 started
+worker 153 started
+worker 154 started
+worker 155 started
+worker 156 started
+
+   Symfony\Component\Debug\Exception\FatalErrorException  : Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)
+
+  at /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+    119|        sleep(1); //防止父进程还未往消息队列中加入内容直接退出
+    120|          echo "worker ".$worker->pid." started".PHP_EOL;
+    121|         while(true)
+    122|         {
+  > 123|             $msg = $worker->pop();
+    124|             if ($msg)
+    125|             {
+    126|                 Log::debug(__METHOD__.' pop msg:'.$msg. ' cur pid:'.getmypid());
+    127|                 if ($msg === false) {
+
+
+   Whoops\Exception\ErrorException  : Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)
+
+  at /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+    119|        sleep(1); //防止父进程还未往消息队列中加入内容直接退出
+    120|          echo "worker ".$worker->pid." started".PHP_EOL;
+    121|         while(true)
+    122|         {
+  > 123|             $msg = $worker->pop();
+    124|             if ($msg)
+    125|             {
+    126|                 Log::debug(__METHOD__.' pop msg:'.$msg. ' cur pid:'.getmypid());
+    127|                 if ($msg === false) {
+
+  Exception trace:
+
+  1   Whoops\Run::handleError("Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)", "/mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php")
+      /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/vendor/filp/whoops/src/Whoops/Run.php:433
+
+  2   Whoops\Run::handleShutdown()
+      [internal]:0
+[2019-09-10 14:15:10 @152.0]	ERROR	php_swoole_server_rshutdown (ERRNO 503): Fatal error: Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56) in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php on line 123
+
+   Symfony\Component\Debug\Exception\FatalErrorException  : Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)
+
+  at /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+    119|        sleep(1); //防止父进程还未往消息队列中加入内容直接退出
+    120|          echo "worker ".$worker->pid." started".PHP_EOL;
+    121|         while(true)
+    122|         {
+  > 123|             $msg = $worker->pop();
+    124|             if ($msg)
+    125|             {
+    126|                 Log::debug(__METHOD__.' pop msg:'.$msg. ' cur pid:'.getmypid());
+    127|                 if ($msg === false) {
+
+
+   Whoops\Exception\ErrorException  : Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)
+
+  at /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+    119|        sleep(1); //防止父进程还未往消息队列中加入内容直接退出
+    120|          echo "worker ".$worker->pid." started".PHP_EOL;
+    121|         while(true)
+    122|         {
+  > 123|             $msg = $worker->pop();
+    124|             if ($msg)
+    125|             {
+    126|                 Log::debug(__METHOD__.' pop msg:'.$msg. ' cur pid:'.getmypid());
+    127|                 if ($msg === false) {
+
+  Exception trace:
+
+  1   Whoops\Run::handleError("Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)", "/mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php")
+      /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/vendor/filp/whoops/src/Whoops/Run.php:433
+
+  2   Whoops\Run::handleShutdown()
+      [internal]:0
+[2019-09-10 14:15:10 @153.0]	ERROR	php_swoole_server_rshutdown (ERRNO 503): Fatal error: Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56) in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php on line 123
+
+   Symfony\Component\Debug\Exception\FatalErrorException  : Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)
+
+  at /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+    119|        sleep(1); //防止父进程还未往消息队列中加入内容直接退出
+    120|          echo "worker ".$worker->pid." started".PHP_EOL;
+    121|         while(true)
+    122|         {
+  > 123|             $msg = $worker->pop();
+    124|             if ($msg)
+    125|             {
+    126|                 Log::debug(__METHOD__.' pop msg:'.$msg. ' cur pid:'.getmypid());
+    127|                 if ($msg === false) {
+
+
+   Whoops\Exception\ErrorException  : Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)
+
+  at /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+    119|        sleep(1); //防止父进程还未往消息队列中加入内容直接退出
+    120|          echo "worker ".$worker->pid." started".PHP_EOL;
+    121|         while(true)
+    122|         {
+  > 123|             $msg = $worker->pop();
+    124|             if ($msg)
+    125|             {
+    126|                 Log::debug(__METHOD__.' pop msg:'.$msg. ' cur pid:'.getmypid());
+    127|                 if ($msg === false) {
+
+  Exception trace:
+
+  1   Whoops\Run::handleError("Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)", "/mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php")
+      /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/vendor/filp/whoops/src/Whoops/Run.php:433
+
+  2   Whoops\Run::handleShutdown()
+      [internal]:0
+[2019-09-10 14:15:10 @154.0]	ERROR	php_swoole_server_rshutdown (ERRNO 503): Fatal error: Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56) in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php on line 123
+
+   Symfony\Component\Debug\Exception\FatalErrorException  : Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)
+
+  at /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+    119|        sleep(1); //防止父进程还未往消息队列中加入内容直接退出
+    120|          echo "worker ".$worker->pid." started".PHP_EOL;
+    121|         while(true)
+    122|         {
+  > 123|             $msg = $worker->pop();
+    124|             if ($msg)
+    125|             {
+    126|                 Log::debug(__METHOD__.' pop msg:'.$msg. ' cur pid:'.getmypid());
+    127|                 if ($msg === false) {
+
+
+   Whoops\Exception\ErrorException  : Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)
+
+  at /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+    119|        sleep(1); //防止父进程还未往消息队列中加入内容直接退出
+    120|          echo "worker ".$worker->pid." started".PHP_EOL;
+    121|         while(true)
+    122|         {
+  > 123|             $msg = $worker->pop();
+    124|             if ($msg)
+    125|             {
+    126|                 Log::debug(__METHOD__.' pop msg:'.$msg. ' cur pid:'.getmypid());
+    127|                 if ($msg === false) {
+
+  Exception trace:
+
+  1   Whoops\Run::handleError("Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)", "/mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php")
+      /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/vendor/filp/whoops/src/Whoops/Run.php:433
+
+  2   Whoops\Run::handleShutdown()
+      [internal]:0
+[2019-09-10 14:15:10 @155.0]	ERROR	php_swoole_server_rshutdown (ERRNO 503): Fatal error: Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56) in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php on line 123
+
+   Symfony\Component\Debug\Exception\FatalErrorException  : Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)
+
+  at /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+    119|        sleep(1); //防止父进程还未往消息队列中加入内容直接退出
+    120|          echo "worker ".$worker->pid." started".PHP_EOL;
+    121|         while(true)
+    122|         {
+  > 123|             $msg = $worker->pop();
+    124|             if ($msg)
+    125|             {
+    126|                 Log::debug(__METHOD__.' pop msg:'.$msg. ' cur pid:'.getmypid());
+    127|                 if ($msg === false) {
+
+
+   Whoops\Exception\ErrorException  : Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)
+
+  at /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+    119|        sleep(1); //防止父进程还未往消息队列中加入内容直接退出
+    120|          echo "worker ".$worker->pid." started".PHP_EOL;
+    121|         while(true)
+    122|         {
+  > 123|             $msg = $worker->pop();
+    124|             if ($msg)
+    125|             {
+    126|                 Log::debug(__METHOD__.' pop msg:'.$msg. ' cur pid:'.getmypid());
+    127|                 if ($msg === false) {
+
+  Exception trace:
+
+  1   Whoops\Run::handleError("Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56)", "/mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php")
+      /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/vendor/filp/whoops/src/Whoops/Run.php:433
+
+  2   Whoops\Run::handleShutdown()
+      [internal]:0
+[2019-09-10 14:15:10 @156.0]	ERROR	php_swoole_server_rshutdown (ERRNO 503): Fatal error: Uncaught ErrorException: Swoole\Process::pop(): no msgqueue, cannot use pop() in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php:123
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Swoole\\Process:...', '/mnt/d/e/web/ap...', 123, Array)
+#1 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(123): Swoole\Process->pop()
+#2 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(77): App\Http\swoole\SwooleHttpServer->sub_process(Object(Swoole\Process))
+#3 [internal function]: App\Http\swoole\SwooleHttpServer->App\Http\swoole\{closure}(Object(Swoole\Process))
+#4 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(83): Swoole\Process->start()
+#5 /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php(56) in /mnt/d/e/web/applications/source/code/catervendor/doc/learnlaravel6/app/Http/swoole/SwooleHttpServer.php on line 123
+[2019-09-10 15:59:28 #148.3]	WARNING	swSignalfd_onSignal (ERRNO 707): Unable to find callback function for signal Hangup: 1
